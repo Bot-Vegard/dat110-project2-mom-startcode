@@ -125,33 +125,30 @@ public class Dispatcher extends Stopable {
 	public void onSubscribe(SubscribeMsg msg) {
 
 		Logger.log("onSubscribe:" + msg.toString());
-
-		// TODO: subscribe user to the topic
-		// user and topic is contained in the subscribe message
-		
-		throw new UnsupportedOperationException(TODO.method());
+        storage.addSubscriber(msg.getUser(), msg.getTopic());
 
 	}
 
 	public void onUnsubscribe(UnsubscribeMsg msg) {
 
 		Logger.log("onUnsubscribe:" + msg.toString());
-
-		// TODO: unsubscribe user to the topic
-		// user and topic is contained in the unsubscribe message
-		
-		throw new UnsupportedOperationException(TODO.method());
+        storage.removeSubscriber(msg.getUser(), msg.getTopic());
 	}
 
 	public void onPublish(PublishMsg msg) {
 
 		Logger.log("onPublish:" + msg.toString());
+        String topic = msg.getTopic();
+        Set<String> subscribers = storage.getSubscribers(topic);
 
-		// TODO: publish the message to clients subscribed to the topic
-		// topic and message is contained in the subscribe message
-		// messages must be sent using the corresponding client session objects
-		
-		throw new UnsupportedOperationException(TODO.method());
+        if (subscribers != null){
+            for (String user : subscribers){
+                ClientSession session = storage.getSession(user);
+                if (session != null){
+                    session.send(msg);
+                }
+            }
+        }
 
 	}
 }

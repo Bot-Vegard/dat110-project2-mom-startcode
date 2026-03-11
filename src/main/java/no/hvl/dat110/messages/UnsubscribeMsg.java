@@ -13,7 +13,7 @@ public class UnsubscribeMsg extends Message {
         return topic;
     }
 
-    public void setTopic() {
+    public void setTopic(String topic) {
         this.topic = topic;
     }
 
