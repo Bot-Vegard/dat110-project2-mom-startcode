@@ -13,7 +13,7 @@ public class SubscribeMsg extends Message {
         return topic;
     }
 
-    public void setTopic() {
+    public void setTopic(String topic) {
         this.topic = topic;
     }
 

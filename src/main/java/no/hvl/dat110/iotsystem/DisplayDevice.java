@@ -28,8 +28,6 @@ public class DisplayDevice {
         client.disconnect();
 		
 		System.out.println("Display stopping ... ");
-		
-		throw new UnsupportedOperationException(TODO.method());
-		
+
 	}
 }

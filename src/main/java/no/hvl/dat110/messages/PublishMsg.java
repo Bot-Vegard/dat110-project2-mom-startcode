@@ -16,7 +16,7 @@ public class PublishMsg extends Message {
         return topic;
     }
 
-    public void setTopic() {
+    public void setTopic(String topic) {
         this.topic = topic;
     }
 
@@ -28,7 +28,7 @@ public class PublishMsg extends Message {
 	public String getMessage() {
 		return message;
 	}
-    public void setMessage(){
+    public void setMessage(String message){
         this.message = message;
     }
 }

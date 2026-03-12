@@ -109,7 +109,7 @@ public class Dispatcher extends Stopable {
 	public void onCreateTopic(CreateTopicMsg msg) {
 
 		Logger.log("onCreateTopic:" + msg.toString());
-        storage.createTopic(msg.getUser());
+        storage.createTopic(msg.getTopic());
 
 	}
 
@@ -117,9 +117,8 @@ public class Dispatcher extends Stopable {
 
 		Logger.log("onDeleteTopic:" + msg.toString());
 
-		storage.deleteTopic(msg.getUser());
-		
-		throw new UnsupportedOperationException(TODO.method());
+		storage.deleteTopic(msg.getTopic());
+
 	}
 
 	public void onSubscribe(SubscribeMsg msg) {
